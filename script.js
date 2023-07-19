@@ -59,14 +59,14 @@ function calculateSum() {
 
   }
 
-function reduceSum(total){
+// function reduceSum(total){
     
-    $(".amount").each(function () {
-        total += parseFloat($(this).text());
-    });
+//     $(".amount").each(function () {
+//         total += parseFloat($(this).text());
+//     });
 
-    $("#sum").text(`Sum: ${total} $`);
-}  
+//     $("#sum").text(`Sum: ${total} $`);
+// }  
 
 $(document).ready(function () {
     const add = $("#submit");
