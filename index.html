@@ -5,21 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker</title>
     <link rel="stylesheet" href="/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+
   </head>
   <body>
-    <form action="submit">
-        <input type="text" id="expense">Expense:</input>
-        <input type="text" id="location">Location:</input>
-        <input type="number" id="amount">Amount:</input>
-      <button id="submit">Add to List</button>
-    </form>
-    <div class="output">
-      <table>
-        <tr>
+    <div id="inputs">
+        <p>Expense:</p>
+        <input type="text" id="expense"></input>
+        <p>Location: </p>
+        <input type="text" id="location"></input>
+        <p>Amount:</p>
+        <input type="number" id="amount"></input>
+        <br>
+        <button id="submit">Add to List</button>
+    </div>
+      <table class="output">
+        <tr >
           <th>Expense:</th>
           <th>Location:</th>
           <th>Amount:</th>
+          <th>Delete</th>
         </tr>
+        
 
       </table>
     </div>
