@@ -20,6 +20,7 @@ body {
     width: 80vw;
     margin-left: 8rem;
     margin-top: 1.5rem;
+    background-color: #F5F5F5;
 }
 
 #fields *{
@@ -107,4 +108,8 @@ table {
 #submit:active {
   background-color: #0039D7;
   border-color: #0039D7;
+}
+
+#sum {
+    margin-left: 23rem;
 }

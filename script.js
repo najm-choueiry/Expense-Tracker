@@ -28,8 +28,10 @@ function addExpense() {
 
     // to delete
     items.find(".remove").click(function() {
-        items.remove()
-
+        // items.remove()
+        const amountToRemove = parseFloat($(this).siblings(".amount").text());
+        items.remove();
+        reduceSum(amountToRemove);
     })
 
 
@@ -55,18 +57,15 @@ function calculateSum() {
         total += parseFloat($(this).text());
     });
 
-    $("#sum").text(`Sum: ${total} $`);
+    $("#sum").text(`Sum: ${total.toFixed(2)} $`);
 
   }
 
-// function reduceSum(total){
-    
-//     $(".amount").each(function () {
-//         total += parseFloat($(this).text());
-//     });
-
-//     $("#sum").text(`Sum: ${total} $`);
-// }  
+  function reduceSum(reductionAmount) {
+    let currentSum = parseFloat($("#sum").text().replace("Sum: ", "").replace(" $", ""));
+    const newSum = currentSum - reductionAmount;
+    $("#sum").text(`Sum: ${newSum.toFixed(2)} $`);
+}
 
 $(document).ready(function () {
     const add = $("#submit");
