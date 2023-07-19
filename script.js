@@ -1,37 +1,72 @@
-function expenseTracker(expense) {
-    return
-    `
-    <td>${expense}</td>
+function expenseTracker(expense,location,amount) {
+    return `
+    <tr>
+    <td class="expense">${expense}</td>
+    <td class="location">${location}</td>
+    <td class="amount">${amount}</td>
     <td class="remove">&#128465</td>
-
-    `
+    </tr> `
 }
 
 
 function addExpense() {
     const expense = $('#expense')
-    // const location = $('#location').val()
-    // const amount = $('#amount').val()
+    const location = $('#location')
+    const amount = $('#amount')
+
     const output = $('#output')
 
-    if (expense.val().trim() === "") return ;
+    const sum = $("#sum");
 
-    output.append(expenseTracker(expense))
-    const expense_item = $(expenseTracker(expense))
-    // const location_item = $(expenseTracker(location))
-    // const amount_item = $(expenseTracker(amount))
+    // check if empty
+    if (expense.val().trim() === "" || location.val().trim() === "" || amount.val().trim() === "") return;
 
 
-    // if (expense.val().trim() ==="" || amount.val().trim() ==="" || amount.val().trim()==="") return ; 
 
-    
+    // assiging the variables to the function 
+    const items = $(expenseTracker(expense.val(), location.val(), amount.val()));
 
-    // output.append(expenseTracker)
-    // expense.val("")
-    // location.val("")
-    // amount.val("")
+    // to delete
+    items.find(".remove").click(function() {
+        items.remove()
+
+    })
+
+
+    // to add the items to the table
+    output.append(items)
+
+    // reseting the input fields
+    $('#expense').val('');
+    $('#location').val('');
+    $('#amount').val('');
+
+
+    // displaying the sum
+    calculateSum()
 
 }
+
+function calculateSum() {
+    let total = 0;
+
+    
+    $(".amount").each(function () {
+        total += parseFloat($(this).text());
+    });
+
+    $("#sum").text(`Sum: ${total} $`);
+
+  }
+
+function reduceSum(total){
+    
+    $(".amount").each(function () {
+        total += parseFloat($(this).text());
+    });
+
+    $("#sum").text(`Sum: ${total} $`);
+}  
 
 $(document).ready(function () {
     const add = $("#submit");
